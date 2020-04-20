@@ -17,14 +17,13 @@ public class DepartmentService {
 	private DepartmentRepository repository;
 	
 	public List<Department> findAll(){
-		
 		return repository.findAll();
 		
 	}
-
 	public Department findById(Long id) {
 		Optional<Department> obj = repository.findById(id);
 		return obj.get();
 	}
+	
 	
 }
