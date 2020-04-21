@@ -1,18 +1,11 @@
-package com.example.projectweb.entites;
+package com.example.projectweb.services.dto;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-@Entity
-public class Person {
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+import com.example.projectweb.domain.Person;
+
+public class PersonDTO {
+	
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -20,11 +13,22 @@ public class Person {
 	private String phoneNumber;
 	private Instant   hireDate;
 	
-	@OneToMany
-	private List<Project> project = new ArrayList<>();
-	
-	public Person() {
-	
+	public PersonDTO(Person person) {
+		
+		id = person.getId();
+		firstName = person.getFirstName();
+		lastName = person.getLastName();
+		email = person.getEmail();
+		phoneNumber = person.getPhoneNumber();
+		hireDate = person.getHireDate();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -66,17 +70,4 @@ public class Person {
 	public void setHireDate(Instant hireDate) {
 		this.hireDate = hireDate;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public List<Project> getProject() {
-		return project;
-	}	
-	
 }

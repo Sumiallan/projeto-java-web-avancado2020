@@ -1,4 +1,4 @@
-package com.example.projectweb.entites;
+package com.example.projectweb.domain;
 
 import java.time.Instant;
 
@@ -24,6 +24,20 @@ public class Task {
 	public Task() {
 		
 	}
+
+	
+	public Task(Long id, String title, String description, String taskPoints, Status status, Instant startDate,
+			Instant endDate) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.taskPoints = taskPoints;
+		setStatus(status);
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
 
 	public Long getId() {
 		return id;

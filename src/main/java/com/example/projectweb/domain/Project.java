@@ -1,37 +1,49 @@
-package com.example.projectweb.entites;
+package com.example.projectweb.domain;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Project {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String projectTitle;
+	
 	@OneToOne
 	private Person manager;
-	private Long minSalary;
-	private Long maxSalary;
-	@OneToMany
-	private List<Task> task = new ArrayList<>();
-	
+	private int minSalary;
+	private int maxSalary;
+
+	@ManyToMany
+	private Set<Task> task = new HashSet<>();
+
 	public Project() {
 	}
 
-	public int getId() {
+	public Project(Long id, String projectTitle, Person manager, int minSalary, int maxSalary) {
+		super();
+		this.id = id;
+		this.projectTitle = projectTitle;
+		this.manager = manager;
+		this.minSalary = minSalary;
+		this.maxSalary = maxSalary;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -51,29 +63,24 @@ public class Project {
 		this.manager = manager;
 	}
 
-	public Long getMinSalary() {
+	public int getMinSalary() {
 		return minSalary;
 	}
 
-	public void setMinSalary(Long minSalary) {
+	public void setMinSalary(int minSalary) {
 		this.minSalary = minSalary;
 	}
 
-	public Long getMaxSalary() {
+	public int getMaxSalary() {
 		return maxSalary;
 	}
 
-	public void setMaxSalary(Long maxSalary) {
+	public void setMaxSalary(int maxSalary) {
 		this.maxSalary = maxSalary;
 	}
 
-	public List<Task> getTask() {
+	public Set<Task> getTask() {
 		return task;
 	}
 
-
-	
-	
-	
-	
 }

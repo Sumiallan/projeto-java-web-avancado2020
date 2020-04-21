@@ -1,6 +1,6 @@
-package com.example.projectweb.entites;
+package com.example.projectweb.domain;
 
-import java.util.Date;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,19 +14,34 @@ public class ProjectHistory {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
-	private Date startDate;
-	private Date endDate;
+	private Instant startDate;
+	private Instant endDate;
+	
 	@OneToOne
 	private Person manager;
+	
 	@OneToOne
 	private Department department;
+	
 	@OneToOne
 	private Project project;
 	
 	public ProjectHistory() {
 		
 	}
+	
 
+	public ProjectHistory(Long id, Instant startDate, Instant endDate, Person manager, Department department,
+			Project project) {
+		super();
+		this.id = id;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.manager = manager;
+		this.department = department;
+		this.project = project;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -35,19 +50,19 @@ public class ProjectHistory {
 		this.id = id;
 	}
 
-	public Date getStartDate() {
+	public Instant getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartInstant(Instant startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public Instant getEndInstant() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndInstant(Instant endDate) {
 		this.endDate = endDate;
 	}
 

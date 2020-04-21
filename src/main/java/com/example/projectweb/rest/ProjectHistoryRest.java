@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projectweb.entites.Department;
-import com.example.projectweb.entites.ProjectHistory;
+import com.example.projectweb.domain.Department;
+import com.example.projectweb.domain.ProjectHistory;
 import com.example.projectweb.services.ProjectHistoryService;
 
 @RestController
@@ -20,7 +20,7 @@ public class ProjectHistoryRest {
 	@Autowired
 	private ProjectHistoryService service;
 	
-	@GetMapping("/projecthistorys")
+	@GetMapping("/projecthistories")
 	public ResponseEntity<List<ProjectHistory>> findAll(){
 		List<ProjectHistory> list = service.findAll();
 		return ResponseEntity.ok().body(list);

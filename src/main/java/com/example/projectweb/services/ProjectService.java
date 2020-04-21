@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.projectweb.entites.Project;
+import com.example.projectweb.domain.Project;
 import com.example.projectweb.repositories.ProjectRepository;
 
 @Service

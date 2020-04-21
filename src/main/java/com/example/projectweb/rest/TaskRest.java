@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projectweb.entites.Department;
-import com.example.projectweb.entites.Task;
+import com.example.projectweb.domain.Department;
+import com.example.projectweb.domain.Task;
 import com.example.projectweb.services.TaskService;
 
 @RestController

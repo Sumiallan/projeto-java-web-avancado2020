@@ -1,4 +1,4 @@
-package com.example.projectweb.entites;
+package com.example.projectweb.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 
 @Entity
 public class Department {
@@ -26,6 +24,14 @@ public class Department {
 		
 	}
 	
+	
+	public Department(Long id, String departmentName) {
+		super();
+		this.id = id;
+		this.departmentName = departmentName;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
