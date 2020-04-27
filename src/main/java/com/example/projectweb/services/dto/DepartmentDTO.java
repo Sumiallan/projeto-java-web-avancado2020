@@ -16,6 +16,7 @@ public class DepartmentDTO {
 		
 		id = department.getId();
 		departmentName = department.getDepartmentName();
+		persons = department.getPersons();
 	}
 
 	public Long getId() {

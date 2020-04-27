@@ -1,18 +1,13 @@
-package com.example.projectweb.domain;
+package com.example.projectweb.services.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import com.example.projectweb.domain.Task;
 import com.fasterxml.jackson.annotation.JsonFormat;
-@Entity
-public class Task{
+
+public class TaskDTO {
 	
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+
 	private Long id;
 	private String title;
 	private String description;
@@ -24,36 +19,24 @@ public class Task{
 	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date endDate;
+	
+	
+	public TaskDTO() {
+		
+	}
+	
+	public TaskDTO(Task task) {
+		
+		this.id = task.getId();
+		this.title = task.getTitle();
+		this.description = task.getDescription();
+		this.taskPoints = task.getTaskPoints();
+		this.status = task.getStatus();
+		this.startDate = task.getStartDate();
+		this.endDate = task.getEndDate();
 		
 	
-	public Task() {
-		
 	}
-
-	
-	public Task(Long id, String title, String description, int taskPoints, int status, Date startDate,
-			Date endDate) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.taskPoints = taskPoints;
-		this.status = status;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
-
-
-
-	public int getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
 
 	public Long getId() {
 		return id;
@@ -87,6 +70,13 @@ public class Task{
 		this.taskPoints = taskPoints;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	public Date getStartDate() {
 		return startDate;

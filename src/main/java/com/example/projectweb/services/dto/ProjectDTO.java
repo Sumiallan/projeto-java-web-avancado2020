@@ -1,46 +1,37 @@
-package com.example.projectweb.domain;
+package com.example.projectweb.services.dto;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import com.example.projectweb.domain.Person;
+import com.example.projectweb.domain.Project;
+import com.example.projectweb.domain.Task;
 
-@Entity
-public class Project {
+public class ProjectDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String projectTitle;
-	
-	@OneToOne
+
 	private Person manager;
 	private int minSalary;
 	private int maxSalary;
 
-	@ManyToMany
+
 	private Set<Task> task = new HashSet<>();
 
-	public Project() {
-	}
 
-	public Project(Long id, String projectTitle, Person manager, int minSalary, int maxSalary) {
-		super();
-		this.id = id;
-		this.projectTitle = projectTitle;
-		this.manager = manager;
-		this.minSalary = minSalary;
-		this.maxSalary = maxSalary;
+	public ProjectDTO() {
+		
 	}
-
 	
-	public void setTask(Set<Task> task) {
-		this.task = task;
+	public ProjectDTO(Project project) {
+		
+		this.id = project.getId();
+		this.projectTitle = project.getProjectTitle();
+		this.manager = project.getManager();
+		this.minSalary = project.getMinSalary();
+		this.maxSalary = project.getMaxSalary();
+		this.task = project.getTask();
 	}
 
 	public Long getId() {
@@ -87,4 +78,8 @@ public class Project {
 		return task;
 	}
 
+	public void setTask(Set<Task> task) {
+		this.task = task;
+	}
+	
 }

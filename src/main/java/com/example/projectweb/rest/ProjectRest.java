@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.projectweb.domain.Project;
 import com.example.projectweb.services.ProjectService;
+import com.example.projectweb.services.dto.ProjectDTO;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -27,8 +28,8 @@ public class ProjectRest {
 	}
 	
 	@GetMapping("/project/{id}")
-	public ResponseEntity<Project> findById(@PathVariable Long id){
-		Project obj = service.findById(id);
+	public ResponseEntity<ProjectDTO> findById(@PathVariable Long id){
+		ProjectDTO obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 		 
 	}

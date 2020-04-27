@@ -1,8 +1,9 @@
 package com.example.projectweb.services.dto;
 
-import java.time.Instant;
+import java.util.Date;
 
 import com.example.projectweb.domain.Person;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PersonDTO {
 	
@@ -11,7 +12,9 @@ public class PersonDTO {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
-	private Instant   hireDate;
+	
+	@JsonFormat(pattern="dd/MM/yyyy")
+	private Date   hireDate;
 	
 	public PersonDTO(Person person) {
 		
@@ -63,11 +66,11 @@ public class PersonDTO {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Instant getHireDate() {
+	public Date getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Instant hireDate) {
+	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
 }

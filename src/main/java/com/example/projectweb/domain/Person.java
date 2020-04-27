@@ -1,6 +1,6 @@
 package com.example.projectweb.domain;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Person {
@@ -20,7 +21,8 @@ public class Person {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
-	private Instant   hireDate;
+	@JsonFormat(pattern="dd/MM/yyyy")
+	private Date   hireDate;
 	
 	@JsonIgnore
 	@OneToMany
@@ -29,7 +31,7 @@ public class Person {
 	public Person() {
 	
 	}
-	public Person(Long id, String firstName, String lastName, String email, String phoneNumber, Instant hireDate) {
+	public Person(Long id, String firstName, String lastName, String email, String phoneNumber, Date hireDate) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -72,11 +74,11 @@ public class Person {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Instant getHireDate() {
+	public Date getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Instant hireDate) {
+	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
 

@@ -1,55 +1,47 @@
-package com.example.projectweb.domain;
+package com.example.projectweb.services.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import com.example.projectweb.domain.Department;
+import com.example.projectweb.domain.Person;
+import com.example.projectweb.domain.Project;
+import com.example.projectweb.domain.ProjectHistory;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
-public class ProjectHistory {
+public class ProjectHistoryDTO {
+	
+	
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date startDate;
 	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date endDate;
 	
-	@OneToOne
+
 	private Person manager;
-	
-	@OneToOne
 	private Department department;
 	
-	@OneToOne
 	private Project project;
-
-	@OneToOne
-	private Task task;
 	
-	public ProjectHistory() {
+	
+	
+	public ProjectHistoryDTO() {
+
+	}
+
+	public ProjectHistoryDTO(ProjectHistory projectHistory) {
 		
+		id = projectHistory.getId();
+		startDate = projectHistory.getStartDate();
+		endDate = projectHistory.getEndInstant();
+		manager = projectHistory.getManager();
+		department = projectHistory.getDepartment();
+		project = projectHistory.getProject();
 	}
-	
 
-	public ProjectHistory(Long id, Date startDate, Date endDate, Person manager, Department department,
-			Project project) {
-		super();
-		this.id = id;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.manager = manager;
-		this.department = department;
-		this.project = project;
-	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -62,15 +54,15 @@ public class ProjectHistory {
 		return startDate;
 	}
 
-	public void setStartInstant(Date startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndInstant() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndInstant(Date endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
@@ -97,7 +89,6 @@ public class ProjectHistory {
 	public void setProject(Project project) {
 		this.project = project;
 	}
-	
-	
+
 	
 }
